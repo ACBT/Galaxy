@@ -1,0 +1,12 @@
+H:\Works\Galaxy\Galaxy\Galaxy\bin\Debug\Galaxy.exe.config
+H:\Works\Galaxy\Galaxy\Galaxy\bin\Debug\Galaxy.exe
+H:\Works\Galaxy\Galaxy\Galaxy\bin\Debug\Galaxy.pdb
+H:\Works\Galaxy\Galaxy\Galaxy\bin\Debug\sfmlnet-audio-2.dll
+H:\Works\Galaxy\Galaxy\Galaxy\bin\Debug\sfmlnet-graphics-2.dll
+H:\Works\Galaxy\Galaxy\Galaxy\bin\Debug\sfmlnet-system-2.dll
+H:\Works\Galaxy\Galaxy\Galaxy\bin\Debug\sfmlnet-window-2.dll
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.csprojAssemblyReference.cache
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.csproj.CoreCompileInputs.cache
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.csproj.CopyComplete
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.exe
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.pdb
