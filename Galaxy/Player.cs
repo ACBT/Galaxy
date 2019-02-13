@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SFML.Graphics;
+using SFML.Window;
 using Galaxy;
 using SFML.System;
 using SFML.Window;
@@ -12,7 +13,7 @@ namespace Galaxy
 {
     class Player : Transformable, Drawable
     {
-        public const float PLAYER_FLIGHT_SPEED = 4f;
+        public const float PLAYER_FLIGHT_SPEED = 5f;
         public const float PLAYER_FLIGHT_ACCELERATION = 0.2f;
         public Vector2f startPosition;
         private float x;
@@ -68,23 +69,26 @@ namespace Galaxy
                 if (isMoveLeft)
                 {
                     movement.X -= PLAYER_FLIGHT_SPEED;
-                    if (movement.X >= Program.window.Size.X || movement.X < 0)
-                        movement = new Vector2f(Program.window.Size.X, movement.Y);
+                    if (movement.X < -(Program.window.Size.X / 2))
+                        movement = new Vector2f(-Program.window.Size.X/2, movement.Y);
                 }
                 if (isMoveRight)
                 {
                     movement.X += PLAYER_FLIGHT_SPEED;
-                    if (Position.X >= Program.window.Size.X)
-                        movement = new Vector2f(800, 400);
-
+                    if (movement.X > (Program.window.Size.X / 2))
+                        movement = new Vector2f((Program.window.Size.X/2), movement.Y);
                 }
                 if (isMoveUp)
                 {
                     movement.Y -= PLAYER_FLIGHT_SPEED;
+                    if (movement.Y < -(Program.window.Size.Y / 1.5f))
+                        movement = new Vector2f(movement.X, -(Program.window.Size.Y / 1.5f));
                 }
                 if (isMoveDown)
                 {
                     movement.Y += PLAYER_FLIGHT_SPEED;
+                    if (movement.Y > rectangleShape.Size.Y)
+                        movement = new Vector2f(movement.X, rectangleShape.Size.Y);
                 }
             }
         }
@@ -93,7 +97,6 @@ namespace Galaxy
         {
             bool isScreen = false;
             velocity += new Vector2f(0,0.15f);
-
             int pX = (int)(Position.X - rectangleShape.Origin.X + rectangleShape.Size.X / 2);
             int pY = (int)(Position.Y + rectangleShape.Size.Y);
         }
