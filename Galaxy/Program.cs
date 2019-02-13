@@ -12,6 +12,8 @@ namespace Galaxy
     {
         public static RenderWindow window;
         public static Game Game { get; private set; }
+
+        
         static void Main(string[] args)
         {
             window = new RenderWindow(new SFML.Window.VideoMode(800,600),"Galaxy");

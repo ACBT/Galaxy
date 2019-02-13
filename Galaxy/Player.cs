@@ -10,22 +10,28 @@ namespace Galaxy
 {
     class Player : Transformable, Drawable
     {
-        private double x;
-        private double y;
+        private float x;
+        private float y;
         private int r;
         private Color color1;
         private Color color2;
         RectangleShape rectangleShape;
+        Sprite sp;
 
         public Player()
         {
-            rectangleShape = new RectangleShape(new SFML.System.Vector2f(50, 50));
-            rectangleShape.Texture = Resources.field;
-            rectangleShape.TextureRect = new IntRect(0, 0, 50, 50);
-            x = Program.window.Size.X / 2;
-            y = Program.window.Size.Y / 2;
+           
+            x = Program.window.Size.X / 2 - 70;
+            y = Program.window.Size.Y / 2 + 100;
             r = 5;
-            color1 = Color.Blue;
+            //Resources.Loadfield();
+            rectangleShape = new RectangleShape(new SFML.System.Vector2f(100, 100));
+            rectangleShape.Texture = Resources.pl_texture;
+            rectangleShape.Position = new SFML.System.Vector2f(x, y);
+            sp = new Sprite();
+            sp.Texture = Resources.pl_texture;
+            //rectangleShape.TextureRect = new IntRect(0, 0, 100, 100);
+            //color1 = Color.Blue;
         }
 
         //Обновление информации о игроке
@@ -39,10 +45,11 @@ namespace Galaxy
 
         //}
 
+
         public void Draw(RenderTarget target, RenderStates states)
-        {
+        { 
             states.Transform *= Transform;
-            target.Draw(rectangleShape);
+            target.Draw(rectangleShape,states);
         }
     }
 }

@@ -10,10 +10,11 @@ namespace Galaxy
     class Game 
     {
         World world;
-
+        Player player;
         public Game()
         {
             world = new World();
+           
         }
         public void Update()
         {

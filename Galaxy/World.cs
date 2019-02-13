@@ -11,16 +11,24 @@ namespace Galaxy
     {
         Player pl;
         Enemy en;
+        EnemyArray ena;
 
         public World()
         {
             pl = new Player();
             en = new Enemy();
+            ena = new EnemyArray();
         }
+
+        
+        
 
         public void Draw(RenderTarget target, RenderStates states)
         {
-            target.Draw(pl);
+            
+            states.Transform *= Transform;
+            target.Draw(pl,states);
+            target.Draw(ena, states);
         }
     }
 }
