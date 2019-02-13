@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using SFML.Graphics;
 using Galaxy;
 using SFML.System;
+using SFML.Window;
 
 namespace Galaxy
 {
     class Player : Transformable, Drawable
     {
+        public const float PLAYER_FLIGHT_SPEED = 4f;
+        public const float PLAYER_FLIGHT_ACCELERATION = 0.2f;
+        public Vector2f startPosition;
         private float x;
         private float y;
         private int r;
@@ -18,6 +22,8 @@ namespace Galaxy
         private Color color2;
         RectangleShape rectangleShape;
         Sprite sp;
+        Vector2f velocity;
+        Vector2f movement;
 
         public Player()
         {
@@ -28,24 +34,69 @@ namespace Galaxy
             //Resources.Loadfield();
             rectangleShape = new RectangleShape(new Vector2f(100, 100));
             rectangleShape.Texture = Resources.pl_texture;
-            rectangleShape.Position = new SFML.System.Vector2f(x, y);
+            //rectangleShape.Origin = new Vector2f(x, y);
+            rectangleShape.Position = new Vector2f(x, y);
             sp = new Sprite();
             sp.Texture = Resources.pl_texture;
             //rectangleShape.TextureRect = new IntRect(0, 0, 100, 100);
             //color1 = Color.Blue;
         }
 
-        //Обновление информации о игроке
-        public void update()
+        public void Spawn()
         {
-
+            Position = startPosition;
+        }
+        //Обновление информации о игроке
+        public void Update()
+        {
+            UpdatePhysics();
+            UpdateMovement();
+            //Position += movement + velocity;
+            Position = movement;
         }
 
-        //public void draw(Texture t)
-        //{
+        private void UpdateMovement()
+        {
+            bool isMoveLeft = Keyboard.IsKeyPressed(Keyboard.Key.A);
+            bool isMoveRight = Keyboard.IsKeyPressed(Keyboard.Key.D);
+            bool isMoveUp = Keyboard.IsKeyPressed(Keyboard.Key.W);
+            bool isMoveDown= Keyboard.IsKeyPressed(Keyboard.Key.S);
+            bool isMove = isMoveLeft || isMoveRight || isMoveUp || isMoveDown;
 
-        //}
+            if (isMove)
+            {
+                if (isMoveLeft)
+                {
+                    movement.X -= PLAYER_FLIGHT_SPEED;
+                    if (movement.X >= Program.window.Size.X || movement.X < 0)
+                        movement = new Vector2f(Program.window.Size.X, movement.Y);
+                }
+                if (isMoveRight)
+                {
+                    movement.X += PLAYER_FLIGHT_SPEED;
+                    if (Position.X >= Program.window.Size.X)
+                        movement = new Vector2f(800, 400);
 
+                }
+                if (isMoveUp)
+                {
+                    movement.Y -= PLAYER_FLIGHT_SPEED;
+                }
+                if (isMoveDown)
+                {
+                    movement.Y += PLAYER_FLIGHT_SPEED;
+                }
+            }
+        }
+
+        private void UpdatePhysics()
+        {
+            bool isScreen = false;
+            velocity += new Vector2f(0,0.15f);
+
+            int pX = (int)(Position.X - rectangleShape.Origin.X + rectangleShape.Size.X / 2);
+            int pY = (int)(Position.Y + rectangleShape.Size.Y);
+        }
 
         public void Draw(RenderTarget target, RenderStates states)
         { 

@@ -14,16 +14,17 @@ namespace Galaxy
         public Game()
         {
             world = new World();
-           
+            player = new Player();
         }
         public void Update()
         {
-
+            player.Update();
         }
 
         public void Draw()
         {
             Program.window.Draw(world);
+            Program.window.Draw(player);
         }
 
         

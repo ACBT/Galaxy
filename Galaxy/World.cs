@@ -15,19 +15,22 @@ namespace Galaxy
 
         public World()
         {
-            pl = new Player();
+           
             en = new Enemy(TypeEnemy.HITHER);
             ena = new EnemyArray();
         }
 
-        
+        public void Update()
+        {
+            
+        }
         
 
         public void Draw(RenderTarget target, RenderStates states)
         {
-            
+
             states.Transform *= Transform;
-            target.Draw(pl,states);
+            //target.Draw(pl,states);
             target.Draw(ena, states);
         }
     }
