@@ -7,7 +7,7 @@ using SFML.Graphics;
 using SFML.Window;
 using Galaxy;
 using SFML.System;
-using SFML.Window;
+
 
 namespace Galaxy
 {
@@ -69,14 +69,14 @@ namespace Galaxy
                 if (isMoveLeft)
                 {
                     movement.X -= PLAYER_FLIGHT_SPEED;
-                    if (movement.X < -(Program.window.Size.X / 2))
-                        movement = new Vector2f(-Program.window.Size.X/2, movement.Y);
+                    if (movement.X < -(Program.window.Size.X / 2) + 50)
+                        movement = new Vector2f(-Program.window.Size.X/2 + 50, movement.Y);
                 }
                 if (isMoveRight)
                 {
                     movement.X += PLAYER_FLIGHT_SPEED;
-                    if (movement.X > (Program.window.Size.X / 2))
-                        movement = new Vector2f((Program.window.Size.X/2), movement.Y);
+                    if (movement.X > (Program.window.Size.X / 2) - 10)
+                        movement = new Vector2f(Program.window.Size.X/2 - 10, movement.Y);
                 }
                 if (isMoveUp)
                 {
