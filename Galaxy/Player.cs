@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SFML.Graphics;
 using Galaxy;
+using SFML.System;
 
 namespace Galaxy
 {
@@ -25,7 +26,7 @@ namespace Galaxy
             y = Program.window.Size.Y / 2 + 100;
             r = 5;
             //Resources.Loadfield();
-            rectangleShape = new RectangleShape(new SFML.System.Vector2f(100, 100));
+            rectangleShape = new RectangleShape(new Vector2f(100, 100));
             rectangleShape.Texture = Resources.pl_texture;
             rectangleShape.Position = new SFML.System.Vector2f(x, y);
             sp = new Sprite();
