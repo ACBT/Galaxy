@@ -39,6 +39,7 @@ namespace Galaxy
         {
             window.SetView(new View(new FloatRect(0, 0, e.Width, e.Height)));
 
+
         }
 
         private static void Window_Closed(object sender, EventArgs e)

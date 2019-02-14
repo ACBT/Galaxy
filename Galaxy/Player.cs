@@ -18,13 +18,16 @@ namespace Galaxy
         public Vector2f startPosition;
         private float x;
         private float y;
+        public static float pX;
+        public static float pY;
         private int r;
         private Color color1;
         private Color color2;
-        RectangleShape rectangleShape;
+        public static RectangleShape rectangleShape;
         Sprite sp;
         Vector2f velocity;
-        Vector2f movement;
+        public static Vector2f movement;
+        public static Vector2f pos;
 
         public Player()
         {
@@ -37,8 +40,11 @@ namespace Galaxy
             rectangleShape.Texture = Resources.pl_texture;
             //rectangleShape.Origin = new Vector2f(x, y);
             rectangleShape.Position = new Vector2f(x, y);
+            pos = Position;
             sp = new Sprite();
             sp.Texture = Resources.pl_texture;
+            pX = movement.X;
+            pY = movement.Y;
             //rectangleShape.TextureRect = new IntRect(0, 0, 100, 100);
             //color1 = Color.Blue;
         }
@@ -54,6 +60,9 @@ namespace Galaxy
             UpdateMovement();
             //Position += movement + velocity;
             Position = movement;
+            pos = Position;
+            pX = movement.X; 
+            pY = movement.Y;
         }
 
         private void UpdateMovement()
@@ -62,6 +71,7 @@ namespace Galaxy
             bool isMoveRight = Keyboard.IsKeyPressed(Keyboard.Key.D);
             bool isMoveUp = Keyboard.IsKeyPressed(Keyboard.Key.W);
             bool isMoveDown= Keyboard.IsKeyPressed(Keyboard.Key.S);
+            bool isShoot = Keyboard.IsKeyPressed(Keyboard.Key.Space);
             bool isMove = isMoveLeft || isMoveRight || isMoveUp || isMoveDown;
 
             if (isMove)
@@ -90,7 +100,16 @@ namespace Galaxy
                     if (movement.Y > rectangleShape.Size.Y)
                         movement = new Vector2f(movement.X, rectangleShape.Size.Y);
                 }
+
+                pX = movement.X;
+                pY = movement.Y;
+                //if (isShoot)
+                //{
+                //    Bullet bullet = new Bullet();
+                //    bullet.Update();
+                //}
             }
+           
         }
 
         private void UpdatePhysics()
@@ -105,6 +124,8 @@ namespace Galaxy
         { 
             states.Transform *= Transform;
             target.Draw(rectangleShape,states);
+            pX = movement.X;
+            pY = movement.Y;
         }
     }
 }

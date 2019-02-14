@@ -16,8 +16,8 @@ namespace Galaxy
         public World()
         {
            
-            en = new Enemy(TypeEnemy.HITHER);
-            ena = new EnemyArray();
+            //en = new Enemy(TypeEnemy.HITHER);
+            //ena = new EnemyArray();
         }
 
         public void Update()
@@ -31,7 +31,7 @@ namespace Galaxy
 
             states.Transform *= Transform;
             //target.Draw(pl,states);
-            target.Draw(ena, states);
+            //target.Draw(ena, states);
         }
     }
 }

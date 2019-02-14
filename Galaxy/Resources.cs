@@ -18,7 +18,7 @@ namespace Galaxy
         {
             pl_texture = new Texture(SPRITES_DIR + "spaceship.png");
             en_texture = new Texture(SPRITES_DIR + "vrag1.png");
-            bl_texture = new Texture(SPRITES_DIR + "bullet.png");
+            bl_texture = new Texture(SPRITES_DIR + "bullet2.png");
         }
     }
 }
