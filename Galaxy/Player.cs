@@ -38,12 +38,12 @@ namespace Galaxy
             //Resources.Loadfield();
             rectangleShape = new RectangleShape(new Vector2f(100, 100));
             rectangleShape.Texture = Resources.pl_texture;
-            //rectangleShape.Origin = new Vector2f(x, y);
+            //rectangleShape.Origin = new Vector2f(0, 0);
             rectangleShape.Position = new Vector2f(x, y);
             pos = Position;
             sp = new Sprite();
             sp.Texture = Resources.pl_texture;
-            pX = movement.X;
+            pX = Position.X;
             pY = movement.Y;
             //rectangleShape.TextureRect = new IntRect(0, 0, 100, 100);
             //color1 = Color.Blue;
@@ -56,13 +56,13 @@ namespace Galaxy
         //Обновление информации о игроке
         public void Update()
         {
-            UpdatePhysics();
+            //UpdatePhysics();
             UpdateMovement();
             //Position += movement + velocity;
             Position = movement;
             pos = Position;
-            pX = movement.X; 
-            pY = movement.Y;
+            //pX = Position.X;
+            //pY = movement.Y;
         }
 
         private void UpdateMovement()
@@ -100,14 +100,8 @@ namespace Galaxy
                     if (movement.Y > rectangleShape.Size.Y)
                         movement = new Vector2f(movement.X, rectangleShape.Size.Y);
                 }
-
-                pX = movement.X;
-                pY = movement.Y;
-                //if (isShoot)
-                //{
-                //    Bullet bullet = new Bullet();
-                //    bullet.Update();
-                //}
+                //pX = Position.X;
+                //pY = movement.Y;
             }
            
         }
@@ -124,8 +118,8 @@ namespace Galaxy
         { 
             states.Transform *= Transform;
             target.Draw(rectangleShape,states);
-            pX = movement.X;
-            pY = movement.Y;
+            //pX = Position.X;
+            //pY = movement.Y;
         }
     }
 }

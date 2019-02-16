@@ -15,7 +15,7 @@ namespace Galaxy
 
         public World()
         {
-           
+
             //en = new Enemy(TypeEnemy.HITHER);
             //ena = new EnemyArray();
         }

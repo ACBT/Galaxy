@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.Window;
@@ -22,6 +23,7 @@ namespace Galaxy
             window.Resized += Window_Resized;
             Resources.Loadfield();
             Game = new Game();
+            
 
             while (window.IsOpen)
             {
