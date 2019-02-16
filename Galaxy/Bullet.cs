@@ -16,7 +16,7 @@ namespace Galaxy
         public const float BULLET_SPEED = 5.5f;
         RectangleShape bulletShape;
         Vector2f bulletPos;
-        
+        bool key = true;
         public float pX;
         Thread bulletThread;
         
@@ -43,7 +43,10 @@ namespace Galaxy
         private void UpdatePhysic()
         {
             bulletPos.Y -= BULLET_SPEED;
-            bulletPos.X = Player.movement.X/1000;
+            pX += BULLET_SPEED;
+            if (key)
+                bulletPos.X = Player.movement.X/1000;
+            key = false;
             //bulletPos.X += Position.X;
             //pX = Position.X;
         }
