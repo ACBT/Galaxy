@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
+
 namespace Galaxy
 {
     class Game 
@@ -33,11 +34,11 @@ namespace Galaxy
             bullets = new List<Bullet>();
             enemies = new List<Enemy>();
             
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
                 enemies.Add(new Enemy(TypeEnemy.HITHER));
             foreach (Enemy enemy in enemies)
             {
-                //enemy.Origin = new Vector2f(player.Position.X, 100);
+                //enemy.Origin = new Vector2f(0, Enemy.rectangleShape.Size.Y/2);
                 //enemy.Position = new Vector2f(player.Position.X + 175*2,100);
                 enemy.Position = new Vector2f(rn.Next(350  ,700), rn.Next(0, Convert.ToInt32(Program.window.Size.Y) - 400));
                 
@@ -67,27 +68,57 @@ namespace Galaxy
 
             foreach (Enemy enemy in enemies.ToArray())
                 foreach (Bullet bullet in bullets.ToArray())
-                    if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 < bullet.Position.X * 1000 + 350)
+                {
+                    if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 < bullet.Position.X * 1000 + 350 && enemy.Position.Y - 10 > bullet.Position.Y && enemy.Position.Y + 10 < bullet.Position.Y)
+                    {
+                        //text.DisplayedString = (bullet.Position.Y).ToString();
                         enemies.Remove(enemy);
-            foreach (Bullet bullet in bullets)
+                    }
+                    //float dx = (float)Math.Sqrt((enemy.Position.X - bullet.Position.X) * 2 + (enemy.Position.Y - bullet.Position.Y) * 2);
+                    //text.DisplayedString = ((int)dx).ToString() + " " + ((int)(bullet.Position.X )).ToString() + " " + (enemy.Position.X).ToString();
+                    //if (dx < 50)
+                    //{
+                    //    //enemy.Hit();
+                    //   // bullets.Remove(bullet);
+                    //    break;
+
+                    //}
+
+                    //bool remove = enemy.Remove();
+                    //if (remove)
+                    //    enemies.Remove(enemy);
+                }
+
+            //if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 < bullet.Position.X * 1000 + 350 && enemy.Position.Y - 10 > bullet.Position.Y && enemy.Position.Y + 10 < bullet.Position.Y)
+            //{
+            //text.DisplayedString = (bullet.Position.Y).ToString();
+            //enemies.Remove(enemy);
+            //}
+
+            foreach (Bullet bullet in bullets.ToArray())
+            {
+                if (bullet.Position.Y < -600)
+                    bullets.Remove(bullet);
                 bullet.Update();
+            }
+                
 
             foreach (Enemy enemy in enemies)
                 enemy.Update();
 
 
-                
-                         
-                            
-           
-                    //text.DisplayedString = (bullet.Position.X*1000 + 350).ToString();
+
+
+
+
+            //text.DisplayedString = (bullet.Position.X*1000 + 350).ToString();
             //if (enemy.Position.X  - 30 < bullet.Position.X)
             //{
             //    enemies.Remove(enemy);
             //    text.DisplayedString = (bullet.Position).ToString();
             //}
 
-            //text.DisplayedString = (bullet.Position.X*1000).ToString();
+           
             //if (((enemy.Position.X - bullet.Position.X) * (enemy.Position.X - bullet.Position.X) + (enemy.Position.Y - bullet.Position.Y) * (enemy.Position.Y - bullet.Position.Y)) < 10)
             //if ( bullet.Position.Y == 0)
             //{
@@ -98,7 +129,7 @@ namespace Galaxy
 
             //enemies[1].Position = new Vector2f(100, 200);
             UpdBullet();
-            //text.DisplayedString += "     " + enemies[0].Position.X.ToString();
+            //text.DisplayedString += "     " + enemies[0].Position.Y.ToString();
 
         }
         public void kill()

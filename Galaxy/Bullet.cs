@@ -16,6 +16,7 @@ namespace Galaxy
         public const float BULLET_SPEED = 5.5f;
         RectangleShape bulletShape;
         Vector2f bulletPos;
+        
         public float pX;
         Thread bulletThread;
         
@@ -25,6 +26,7 @@ namespace Galaxy
             bulletShape = new RectangleShape(new Vector2f(10, 10));
             bulletShape.Texture = Resources.bl_texture;
             bulletShape.Position = new Vector2f(Player.movement.X + 375, Player.movement.Y + 400);
+            
         }
         public void Update()
         {
@@ -34,10 +36,9 @@ namespace Galaxy
             Position = bulletPos;
         }
 
-        private void UpdateShoot()
-        {
-           
-        }
+       
+
+       
 
         private void UpdatePhysic()
         {

@@ -18,7 +18,8 @@ namespace Galaxy
         private Color color2;
         public static RectangleShape rectangleShape;
         Random rn = new Random();
-       
+        int hp;
+
         TypeEnemy type = TypeEnemy.HITHER;
         //private object random;
 
@@ -46,11 +47,22 @@ namespace Galaxy
                     rectangleShape = new RectangleShape(new SFML.System.Vector2f(50, 50));
                     //rectangleShape.Position = new Vector2f(rn.Next(0, Convert.ToInt32(Program.window.Size.X) - 50), rn.Next(0, Convert.ToInt32(Program.window.Size.Y) - 400));
                     rectangleShape.Texture = Resources.en_texture;
+                    hp = 2;
                     break;
             }
         }
 
-        
+        public bool Remove()
+        {
+            if (hp <= 0)
+                return true;
+            return false;
+        }
+
+        public void Hit()
+        {
+            hp--;
+        }
 
         public void Draw(RenderTarget target, RenderStates states)
         {

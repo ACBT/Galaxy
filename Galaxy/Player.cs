@@ -38,7 +38,7 @@ namespace Galaxy
             //Resources.Loadfield();
             rectangleShape = new RectangleShape(new Vector2f(100, 100));
             rectangleShape.Texture = Resources.pl_texture;
-            //rectangleShape.Origin = new Vector2f(0, 0);
+            rectangleShape.Origin = new Vector2f(0, 0);
             rectangleShape.Position = new Vector2f(x, y);
             pos = Position;
             sp = new Sprite();
