@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.Window;
@@ -16,12 +17,13 @@ namespace Galaxy
         
         static void Main(string[] args)
         {
-            window = new RenderWindow(new SFML.Window.VideoMode(800,600),"Galaxy");
+            window = new RenderWindow(new VideoMode(800,600),"Galaxy");
             window.SetVerticalSyncEnabled(true);
             window.Closed += Window_Closed;
             window.Resized += Window_Resized;
             Resources.Loadfield();
             Game = new Game();
+            
 
             while (window.IsOpen)
             {
@@ -38,6 +40,7 @@ namespace Galaxy
         private static void Window_Resized(object sender, SizeEventArgs e)
         {
             window.SetView(new View(new FloatRect(0, 0, e.Width, e.Height)));
+
 
         }
 
