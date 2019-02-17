@@ -24,7 +24,7 @@ namespace Galaxy
         public void SetPosition(TypeEnemy type ,int i)
         {
             enemies[i] = new Enemy(type);
-            enemies[i].Position = new Vector2f(random.Next(0, Convert.ToInt32(Program.window.Size.X) - 50), random.Next(0, Convert.ToInt32(Program.window.Size.Y) - 400));
+            enemies[i].Position = new Vector2f(random.Next(0, Convert.ToInt32(Form1.window.Size.X) - 50), random.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 400));
         }
 
         public void Draw(RenderTarget target, RenderStates states)

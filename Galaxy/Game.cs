@@ -21,124 +21,173 @@ namespace Galaxy
         Thread bulletThread;
         Random rn = new Random();
         Text text = new Text();
-        public int points = 0000;
+        Text text1 = new Text();
+        Text text2 = new Text();
+        public int points;
+        public int kills;
+        public int hit;
+        public int lvl;
+        public int count_enemy;
         bool bul = false;
         bool bul2 = false;
+        bool bul3 = true;
 
 
         public Game()
         {
+            points = 0;
+            kills = 0;
+            hit = 0;
+            lvl = 1;
             world = new World();
             player = new Player();
             bullets = new List<Bullet>();
             enemies = new List<Enemy>();
+            text.Font = Resources.font;
+            text.DisplayedString = "Уничтожено: " + points.ToString();
+            text.CharacterSize = 14;
+            text.Color = Color.White;
+            text.Position = new Vector2f(0, 10);
 
-            for (int i = 0; i < 5; i++)
-                enemies.Add(new Enemy(TypeEnemy.HITHER));
-            foreach (Enemy enemy in enemies)
-            {
-                //enemy.Origin = new Vector2f(player.Position.X, 100);
-                //enemy.Position = new Vector2f(player.Position.X + 175*2,100);
-                enemy.Position = new Vector2f(rn.Next(350, 700), rn.Next(0, Convert.ToInt32(Program.window.Size.Y) - 300));
 
-            }
+            text1.Font = Resources.font;
+            text1.DisplayedString = "Выстрелов: " + hit.ToString();
+            text1.CharacterSize = 14;
+            text1.Color = Color.White;
+            text1.Position = new Vector2f(0, 30);
 
-            //bulletThread = new Thread(UpdBullet);
-            //bulletThread.Start();
+            text2.Font = Resources.font;
+            text2.DisplayedString = "Уровень: " + lvl.ToString();
+            text2.CharacterSize = 14;
+            text2.Color = Color.White;
+            text2.Position = new Vector2f(0, 50);
+
+            SetLevel();
+
         }
+
+        private void SetLevel()
+        {
+            switch (lvl)
+            {
+                case 1:
+                    for (int i = 0; i < 15; i++)
+                        enemies.Add(new Enemy(TypeEnemy.HITHER));
+                    count_enemy = enemies.Count;
+                    foreach (Enemy enemy in enemies)
+                        enemy.Position = new Vector2f(rn.Next(150, 700), rn.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 300));
+                    break;
+                case 2:
+                    for (int i = 0; i < 2; i++)
+                        enemies.Add(new Enemy(TypeEnemy.DISTANT));
+                    foreach (Enemy enemy in enemies)
+                        enemy.Position = new Vector2f(rn.Next(150, 700), rn.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 300));
+                    break;
+                case 3:
+                    for (int i = 0; i < 3; i++)
+                        enemies.Add(new Enemy(TypeEnemy.DISTANT));
+                    foreach (Enemy enemy in enemies)
+                        enemy.Position = new Vector2f(rn.Next(150, 700), rn.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 300));
+                    break;
+            }
+           
+        }
+
+        public void CheckLevel()
+        {
+            switch (points)
+            {
+                case 15:
+                    if (bul3)
+                    {
+                        lvl++;
+                        SetLevel();
+                    }
+                    bul3 = false;
+                    break;
+                case 17:
+                    if (bul3 == false)
+                    {
+                        lvl++;
+                        SetLevel();
+                    }
+                    bul3 = true;
+                    break;
+            }
+        }
+
         public void Update()
         {
-
-
-            text.Font = Resources.font;
-            text.DisplayedString = points.ToString();
-            text.CharacterSize = 24;
-            text.Color = Color.White;
-            text.Position = new Vector2f(160, 10);
+            //text.DisplayedString = "Уничтожено: " + enemies[0].Position.Y.ToString();
+            text.DisplayedString = "Уничтожено: " + points.ToString();
+            text1.DisplayedString = "Выстрелов: " + hit.ToString();
             player.Update();
-            //bulletThread = new Thread(UpdBullet);
-            //bulletThread.Start();
 
-            //if (enemies.Count > 0)
-            //    for (int i = 0; i < enemies.Count; i++)
-            //        for (int j = 0; j < bullets.Count; j++)
-            //            if (enemies[i].Position.X - 10 < bullets[j].Position.X * 1000 + 350 && enemies[i].Position.X + 10 < bullets[j].Position.X * 1000 + 350)
-            //                enemies.Remove(enemies[i]);
+            CheckLevel();
+            text2.DisplayedString = "Уровень: " + lvl.ToString();
+
+
+
 
             foreach (Enemy enemy in enemies.ToArray())
+            {
+                enemy.Update(enemy.GetTypeEnemy());
                 foreach (Bullet bullet in bullets.ToArray())
                 {
-                    //Thread.Sleep(300);
-                    //text.DisplayedString = ((-bullet.Position.Y  ) ).ToString() + " " + (enemy.Position.Y).ToString();
-                    if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 > bullet.Position.X * 1000 + 350 && (enemy.Position.Y*1.5 < -bullet.Position.Y) )
+                    switch (lvl)
                     {
-                        enemies.Remove(enemy);
-                        bullets.Remove(bullet);
-                        break;
+                        case 1:
+                            if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 > bullet.Position.X * 1000 + 350 && (enemy.Position.Y * 1.5 < -bullet.Position.Y) && (enemy.Position.Y * 1.5 - 20 < -bullet.Position.Y))
+                            {
+                 
+                                enemies.Remove(enemy);
+                                bullets.Remove(bullet);
+                                points++;
+                                break;
+                            }
+                            break;
+                        case 2:
+
+                            if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 > bullet.Position.X * 1000 + 350 && (enemy.Position.Y * 1.5 < -bullet.Position.Y) && (enemy.Position.Y * 1.5 - 70 < -bullet.Position.Y))
+                            {
+                                
+                                enemies.Remove(enemy);
+                                bullets.Remove(bullet);
+                                points++;
+                                break;
+                            }
+                            break;
+                        case 3:
+
+                            if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 > bullet.Position.X * 1000 + 350 && (enemy.Position.Y * 1.5 < -bullet.Position.Y) && (enemy.Position.Y * 1.5 - 70 < -bullet.Position.Y))
+                            {
+
+                                enemies.Remove(enemy);
+                                bullets.Remove(bullet);
+                                points++;
+                                break;
+                            }
+                            break;
                     }
+
                 }
-
-            //text.DisplayedString = (enemy.Position.X - 10).ToString() + " " + (enemy.Position.X + 10).ToString() + " " + (bullet.Position.X * 1000 + 350).ToString();
-            //if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 > bullet.Position.X * 1000 + 350 && -(enemy.Position.Y + bullet.pX) < bullet.Position.Y && -(enemy.Position.Y + bullet.pX) - 10 > bullet.Position.Y)
-            //{
-            //    enemies.Remove(enemy);
-            //    bullets.Remove(bullet);
-            //    break;
-            //}
-
+            }
+                
             foreach (Bullet bullet in bullets.ToArray())
             {
                 if (bullet.Position.Y < -600)
                     bullets.Remove(bullet);
                 bullet.Update();
             }
-                
-
-            foreach (Enemy enemy in enemies)
-                enemy.Update();
-
-
-
-
-
-
-            //text.DisplayedString = (bullet.Position.X*1000 + 350).ToString();
-            //if (enemy.Position.X  - 30 < bullet.Position.X)
-            //{
-            //    enemies.Remove(enemy);
-            //    text.DisplayedString = (bullet.Position).ToString();
-            //}
-
-            //text.DisplayedString = (bullet.Position.X*1000).ToString();
-            //if (((enemy.Position.X - bullet.Position.X) * (enemy.Position.X - bullet.Position.X) + (enemy.Position.Y - bullet.Position.Y) * (enemy.Position.Y - bullet.Position.Y)) < 10)
-            //if ( bullet.Position.Y == 0)
-            //{
-            //    enemies.Remove(enemy);
-            //    bullets.Remove(bullet);
-            //    break;
-            //}
-
-            //enemies[1].Position = new Vector2f(100, 200);
-            //UpdBullet();
-            //text.DisplayedString += "     " + enemies[0].Position.X.ToString();
-
         }
-        public void kill()
-        {
-            //enemies.Remove();
-        }
+       
 
-        public void UpdBullet()
-        {
-            //Thread.Sleep(100);
-            foreach (Bullet bullet in bullets)
-                bullet.Update();
-        }
+       
 
         public void Draw()
         {
-            Program.window.Draw(world);
-            Program.window.Draw(player);
+            Form1.window.Draw(world);
+            Form1.window.Draw(player);
             bool isShoot = Keyboard.IsKeyPressed(Keyboard.Key.Space);
 
             if (isShoot)
@@ -150,7 +199,7 @@ namespace Galaxy
                     if (bul2)
                     {
                         bullets.Add(new Bullet());
-
+                        hit++;
 
                     }
 
@@ -158,18 +207,19 @@ namespace Galaxy
             }
 
             foreach (Bullet bullet in bullets)
-                Program.window.Draw(bullet);
+                Form1.window.Draw(bullet);
 
             foreach (Enemy enemy in enemies)
-                Program.window.Draw(enemy);
+                Form1.window.Draw(enemy);
 
 
 
-            Program.window.Draw(text);
+            Form1.window.Draw(text);
+            Form1.window.Draw(text1);
+            Form1.window.Draw(text2);
+            if(Form1.PlayGame == false)
+                Form1.window.Draw(Enemy.text3);
 
-
-            //foreach (Bullet bullet in bullets)
-            //    Program.window.Draw(bullet);
         }
     }
 }

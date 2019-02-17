@@ -13,6 +13,7 @@ namespace Galaxy
         public const string FONTS_DIR = @"..\Resources\Fonts\";
         public static Texture pl_texture;
         public static Texture en_texture;
+        public static Texture en1_texture;
         public static Texture bl_texture;
         public static Font font;
 
@@ -20,6 +21,7 @@ namespace Galaxy
         {
             pl_texture = new Texture(SPRITES_DIR + "spaceship.png");
             en_texture = new Texture(SPRITES_DIR + "vrag1.png");
+            en1_texture = new Texture(SPRITES_DIR + "vrag2.png");
             bl_texture = new Texture(SPRITES_DIR + "bullet3.png");
             font = new Font(FONTS_DIR+ "Roboto.ttf");
         }

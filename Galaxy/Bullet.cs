@@ -13,7 +13,7 @@ namespace Galaxy
 {
     class Bullet : Transformable, Drawable
     {
-        public const float BULLET_SPEED = 5.5f;
+        public const float BULLET_SPEED = 9f;
         RectangleShape bulletShape;
         Vector2f bulletPos;
         bool key = true;
