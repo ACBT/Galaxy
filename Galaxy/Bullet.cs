@@ -13,9 +13,10 @@ namespace Galaxy
 {
     class Bullet : Transformable, Drawable
     {
-        public const float BULLET_SPEED = 5.5f;
+        public const float BULLET_SPEED = 9f;
         RectangleShape bulletShape;
         Vector2f bulletPos;
+        bool key = true;
         public float pX;
         Thread bulletThread;
         
@@ -25,6 +26,7 @@ namespace Galaxy
             bulletShape = new RectangleShape(new Vector2f(10, 10));
             bulletShape.Texture = Resources.bl_texture;
             bulletShape.Position = new Vector2f(Player.movement.X + 375, Player.movement.Y + 400);
+            
         }
         public void Update()
         {
@@ -34,15 +36,17 @@ namespace Galaxy
             Position = bulletPos;
         }
 
-        private void UpdateShoot()
-        {
-           
-        }
+       
+
+       
 
         private void UpdatePhysic()
         {
             bulletPos.Y -= BULLET_SPEED;
-            bulletPos.X = Player.movement.X/1000;
+            pX += BULLET_SPEED;
+            if (key)
+                bulletPos.X = Player.movement.X/1000;
+            key = false;
             //bulletPos.X += Position.X;
             //pX = Position.X;
         }

@@ -32,21 +32,20 @@ namespace Galaxy
         public Player()
         {
            
-            x = Program.window.Size.X / 2 - 70;
-            y = Program.window.Size.Y / 2 + 100;
+            x = Form1.window.Size.X / 2 - 70;
+            y = Form1.window.Size.Y / 2 + 100;
             r = 5;
             //Resources.Loadfield();
             rectangleShape = new RectangleShape(new Vector2f(100, 100));
             rectangleShape.Texture = Resources.pl_texture;
-            //rectangleShape.Origin = new Vector2f(0, 0);
+            rectangleShape.Origin = new Vector2f(0, 0);
             rectangleShape.Position = new Vector2f(x, y);
             pos = Position;
             sp = new Sprite();
             sp.Texture = Resources.pl_texture;
             pX = Position.X;
             pY = movement.Y;
-            //rectangleShape.TextureRect = new IntRect(0, 0, 100, 100);
-            //color1 = Color.Blue;
+
         }
 
         public void Spawn()
@@ -56,13 +55,9 @@ namespace Galaxy
         //Обновление информации о игроке
         public void Update()
         {
-            //UpdatePhysics();
             UpdateMovement();
-            //Position += movement + velocity;
             Position = movement;
             pos = Position;
-            //pX = Position.X;
-            //pY = movement.Y;
         }
 
         private void UpdateMovement()
@@ -79,20 +74,20 @@ namespace Galaxy
                 if (isMoveLeft)
                 {
                     movement.X -= PLAYER_FLIGHT_SPEED;
-                    if (movement.X < -(Program.window.Size.X / 2) + 50)
-                        movement = new Vector2f(-Program.window.Size.X/2 + 50, movement.Y);
+                    if (movement.X < -(Form1.window.Size.X / 2) + 50)
+                        movement = new Vector2f(-Form1.window.Size.X/2 + 50, movement.Y);
                 }
                 if (isMoveRight)
                 {
                     movement.X += PLAYER_FLIGHT_SPEED;
-                    if (movement.X > (Program.window.Size.X / 2) - 10)
-                        movement = new Vector2f(Program.window.Size.X/2 - 10, movement.Y);
+                    if (movement.X > (Form1.window.Size.X / 2) - 10)
+                        movement = new Vector2f(Form1.window.Size.X/2 - 10, movement.Y);
                 }
                 if (isMoveUp)
                 {
                     movement.Y -= PLAYER_FLIGHT_SPEED;
-                    if (movement.Y < -(Program.window.Size.Y / 1.5f))
-                        movement = new Vector2f(movement.X, -(Program.window.Size.Y / 1.5f));
+                    if (movement.Y < -(Form1.window.Size.Y / 1.5f))
+                        movement = new Vector2f(movement.X, -(Form1.window.Size.Y / 1.5f));
                 }
                 if (isMoveDown)
                 {
@@ -100,8 +95,6 @@ namespace Galaxy
                     if (movement.Y > rectangleShape.Size.Y)
                         movement = new Vector2f(movement.X, rectangleShape.Size.Y);
                 }
-                //pX = Position.X;
-                //pY = movement.Y;
             }
            
         }
@@ -118,8 +111,6 @@ namespace Galaxy
         { 
             states.Transform *= Transform;
             target.Draw(rectangleShape,states);
-            //pX = Position.X;
-            //pY = movement.Y;
         }
     }
 }

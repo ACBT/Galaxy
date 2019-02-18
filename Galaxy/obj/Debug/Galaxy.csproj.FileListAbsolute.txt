@@ -10,3 +10,7 @@ H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.csproj.CoreCompileInputs.cache
 H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.csproj.CopyComplete
 H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.exe
 H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.pdb
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.Form1.resources
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.csproj.GenerateResource.cache
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.Properties.Resources.resources
+H:\Works\Galaxy\Galaxy\Galaxy\obj\Debug\Galaxy.Form2.resources

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<statistic>
+  <DateGame name="1">
+    <flags>2</flags>
+    <bomb>0</bomb>
+  </DateGame>
+  <DateGame name="2">
+    <flags>5</flags>
+    <bomb>1</bomb>
+  </DateGame>
+  <DateGame name="3">
+    <flags>10</flags>
+    <bomb>1</bomb>
+  </DateGame>
+  <DateGame name="1">
+    <flags>0</flags>
+    <bomb>0</bomb>
+  </DateGame>
+  <DateGame name="2">
+    <flags>14</flags>
+    <bomb>1</bomb>
+  </DateGame>
+  <DateGame name="3">
+    <flags>0</flags>
+    <bomb>0</bomb>
+  </DateGame>
+  <DateGame name="4">
+    <flags>0</flags>
+    <bomb>0</bomb>
+  </DateGame>
+  <DateGame name="4">
+    <flags>0</flags>
+    <bomb>0</bomb>
+  </DateGame>
+  <DateGame name="4">
+    <flags>0</flags>
+    <bomb>0</bomb>
+  </DateGame>
+  <DateGame name="2">
+    <flags>4</flags>
+    <bomb>2</bomb>
+  </DateGame>
+  <DateGame name="2">
+    <flags>0</flags>
+    <bomb>0</bomb>
+  </DateGame>
+  <DateGame name="1">
+    <flags>8</flags>
+    <bomb>11</bomb>
+  </DateGame>
+  <DateGame name="19">
+    <flags>3</flags>
+    <bomb>138</bomb>
+  </DateGame>
+</statistic>
