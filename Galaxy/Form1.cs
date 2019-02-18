@@ -72,5 +72,11 @@ namespace Galaxy
             panel1.Visible = true;
             comboBox1.SelectedIndex = 0;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.Show();
+        }
     }
 }

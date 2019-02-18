@@ -41,7 +41,9 @@ namespace Galaxy
                         text3.Color = Color.White;
                         text3.Position = new Vector2f(Form1.window.Size.X / 2 - 50, Form1.window.Size.Y / 2);
                         Form1.PlayGame = false;
-                        
+                        Game.xmldocwrie();
+
+
                     }
 
                     UpdPhysic();

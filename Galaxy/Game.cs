@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.Xml;
 
 namespace Galaxy
 {
@@ -23,10 +23,10 @@ namespace Galaxy
         Text text = new Text();
         Text text1 = new Text();
         Text text2 = new Text();
-        public int points;
+        public static int points;
         public int kills;
-        public int hit;
-        public int lvl;
+        public static int hit;
+        public static int lvl;
         public int count_enemy;
         bool bul = false;
         bool bul2 = false;
@@ -180,9 +180,31 @@ namespace Galaxy
                 bullet.Update();
             }
         }
-       
 
-       
+        public static void xmldocwrie()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("XMLFile1.xml");
+            XmlNode root = doc.DocumentElement;
+            XmlElement xRoot = doc.DocumentElement;
+            XmlElement userElem = doc.CreateElement("DateGame");
+            XmlAttribute elem = doc.CreateAttribute("name");
+            XmlElement el1 = doc.CreateElement("flags");
+            XmlElement el2 = doc.CreateElement("bomb");
+            XmlText elemText = doc.CreateTextNode(points.ToString());
+            XmlText el1Text = doc.CreateTextNode(lvl.ToString());
+            XmlText el2Text = doc.CreateTextNode(hit.ToString());
+            elem.AppendChild(elemText);
+            el1.AppendChild(el1Text);
+            el2.AppendChild(el2Text);
+            userElem.Attributes.Append(elem);
+            userElem.AppendChild(el1);
+            userElem.AppendChild(el2);
+            xRoot.AppendChild(userElem);
+            doc.Save("XMLFile1.xml");
+
+        }
+
 
         public void Draw()
         {
