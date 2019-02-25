@@ -52,4 +52,44 @@
     <flags>3</flags>
     <bomb>138</bomb>
   </DateGame>
+  <DateGame name="16">
+    <flags>2</flags>
+    <bomb>177</bomb>
+  </DateGame>
+  <DateGame name="16">
+    <flags>2</flags>
+    <bomb>122</bomb>
+  </DateGame>
+  <DateGame name="18">
+    <flags>3</flags>
+    <bomb>174</bomb>
+  </DateGame>
+  <DateGame name="18">
+    <flags>3</flags>
+    <bomb>174</bomb>
+  </DateGame>
+  <DateGame name="26">
+    <flags>4</flags>
+    <bomb>184</bomb>
+  </DateGame>
+  <DateGame name="32">
+    <flags>7</flags>
+    <bomb>434</bomb>
+  </DateGame>
+  <DateGame name="32">
+    <flags>7</flags>
+    <bomb>434</bomb>
+  </DateGame>
+  <DateGame name="16">
+    <flags>2</flags>
+    <bomb>174</bomb>
+  </DateGame>
+  <DateGame name="19">
+    <flags>3</flags>
+    <bomb>233</bomb>
+  </DateGame>
+  <DateGame name="19">
+    <flags>3</flags>
+    <bomb>233</bomb>
+  </DateGame>
 </statistic>

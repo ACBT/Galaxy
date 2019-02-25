@@ -89,6 +89,30 @@ namespace Galaxy
                     foreach (Enemy enemy in enemies)
                         enemy.Position = new Vector2f(rn.Next(150, 700), rn.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 300));
                     break;
+                case 4:
+                    for (int i = 0; i < 2; i++)
+                        enemies.Add(new Enemy(TypeEnemy.DISTANT));
+                    foreach (Enemy enemy in enemies)
+                        enemy.Position = new Vector2f(rn.Next(150, 700), rn.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 300));
+                    break;
+                case 5:
+                    for (int i = 0; i < 2; i++)
+                        enemies.Add(new Enemy(TypeEnemy.DISTANT));
+                    foreach (Enemy enemy in enemies)
+                        enemy.Position = new Vector2f(rn.Next(150, 700), rn.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 300));
+                    break;
+                case 6:
+                    for (int i = 0; i < 4; i++)
+                        enemies.Add(new Enemy(TypeEnemy.DISTANT));
+                    foreach (Enemy enemy in enemies)
+                        enemy.Position = new Vector2f(rn.Next(150, 700), rn.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 300));
+                    break;
+                case 7:
+                    for (int i = 0; i < 6; i++)
+                        enemies.Add(new Enemy(TypeEnemy.DISTANT));
+                    foreach (Enemy enemy in enemies)
+                        enemy.Position = new Vector2f(rn.Next(150, 800), rn.Next(0, Convert.ToInt32(Form1.window.Size.Y) - 300));
+                    break;
             }
            
         }
@@ -106,6 +130,38 @@ namespace Galaxy
                     bul3 = false;
                     break;
                 case 17:
+                    if (bul3 == false)
+                    {
+                        lvl++;
+                        SetLevel();
+                    }
+                    bul3 = true;
+                    break;
+                case 20:
+                    if (bul3)
+                    {
+                        lvl++;
+                        SetLevel();
+                    }
+                    bul3 = false;
+                    break;
+                case 22:
+                    if (bul3 == false)
+                    {
+                        lvl++;
+                        SetLevel();
+                    }
+                    bul3 = true;
+                    break;
+                case 24:
+                    if (bul3)
+                    {
+                        lvl++;
+                        SetLevel();
+                    }
+                    bul3 = false;
+                    break;
+                case 28:
                     if (bul3 == false)
                     {
                         lvl++;
@@ -146,9 +202,8 @@ namespace Galaxy
                                 break;
                             }
                             break;
-                        case 2:
-
-                            if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 > bullet.Position.X * 1000 + 350 && (enemy.Position.Y * 1.5 < -bullet.Position.Y) && (enemy.Position.Y * 1.5 - 70 < -bullet.Position.Y))
+                        default:
+                            if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 > bullet.Position.X * 1000 + 350 && (enemy.Position.Y * 1.5 < -bullet.Position.Y) && (enemy.Position.Y * 1.5 - 70 < -bullet.Position.Y) && (enemy.Position.Y * 1.5 - 30 < -bullet.Position.Y))
                             {
                                 
                                 enemies.Remove(enemy);
@@ -157,19 +212,7 @@ namespace Galaxy
                                 break;
                             }
                             break;
-                        case 3:
-
-                            if (enemy.Position.X - 10 < bullet.Position.X * 1000 + 350 && enemy.Position.X + 10 > bullet.Position.X * 1000 + 350 && (enemy.Position.Y * 1.5 < -bullet.Position.Y) && (enemy.Position.Y * 1.5 - 70 < -bullet.Position.Y))
-                            {
-
-                                enemies.Remove(enemy);
-                                bullets.Remove(bullet);
-                                points++;
-                                break;
-                            }
-                            break;
                     }
-
                 }
             }
                 
